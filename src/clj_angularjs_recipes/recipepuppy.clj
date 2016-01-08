@@ -2,6 +2,7 @@
   (:require [clj-http.client :as http]))
 
 (def API "http://www.recipepuppy.com/api/")
+(def weatherAPI "http://api.wunderground.com/api/0c726a57890f57e6/conditions/q/autoip.json")
 
 (defn search-recipes
   [query page]
@@ -14,4 +15,9 @@
     (if (> page num-pages)
       recipes
       (recur (inc page) (into recipes (search-recipes query page))))))
-      
+
+(defn get-weather
+	[]
+	(let [recipes []]
+		(into recipes ((http/get weatherAPI) :body)))
+		(println recipes))

@@ -17,7 +17,12 @@
 
 (defroutes api-routes
   (GET "/api/recipes/:category" [category]
+       (println (newline) (recipepuppy/get-recipes category 3))
        (json-response {:category category :recipes (recipepuppy/get-recipes category 3)}))
+  (GET "/weather"
+    [category]
+        (println (newline) (recipepuppy/get-weather))
+        (json-response {:category category :recipes (recipepuppy/get-weather)}))
   (route/resources "/")
   (route/not-found "Page not found"))
 

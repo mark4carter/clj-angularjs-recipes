@@ -16,6 +16,18 @@ app.controller('RecipesController', function ($scope, $http) {
       console.log("ERROR");
     });
   };
+
+  $scope.loadWeather = function(category) {
+    $scope.category = category;
+    $http({url: "/weather", method:"GET"})
+    .success(function(data) {
+      console.log("SUCCESS", data);
+      $scope.recipes = data;
+    })
+    .error(function() {
+      console.log("ERROR");
+    });
+  };
   
   $scope.loadRecipes("bacon");
 
