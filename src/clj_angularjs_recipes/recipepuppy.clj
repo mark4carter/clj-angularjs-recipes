@@ -18,6 +18,4 @@
 
 (defn get-weather
 	[]
-	(let [recipes []]
-		(into recipes ((http/get weatherAPI) :body)))
-		(println recipes))
+  ((http/get weatherAPI) :body))
