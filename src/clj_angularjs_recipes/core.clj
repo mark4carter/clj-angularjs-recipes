@@ -22,7 +22,7 @@
   (GET "/weather"
     [category]
         (println (newline) (recipepuppy/get-weather))
-        (json-response {:category category :recipes (recipepuppy/get-weather)}))
+        {:body (json/generate-string(recipepuppy/get-weather))})
   (route/resources "/")
   (route/not-found "Page not found"))
 

@@ -4,7 +4,9 @@ app.controller('RecipesController', function ($scope, $http) {
 
   $scope.category = null;
   $scope.recipes = [];
-    
+  $scope.dataWeather = null;
+  $scope.test = null;    
+
   $scope.loadRecipes = function(category) {
     $scope.category = category;
     $http({url: "/api/recipes/" + category, method:"GET"})
@@ -22,7 +24,10 @@ app.controller('RecipesController', function ($scope, $http) {
     $http({url: "/weather", method:"GET"})
     .success(function(data) {
       console.log("SUCCESS", data);
-      $scope.recipes = data;
+      $scope.recipes = [];
+      $scope.test = "test";
+      $scope.dataWeather = data;
+      console.log("" + data.current_observation.feelslike_string);
     })
     .error(function() {
       console.log("ERROR");

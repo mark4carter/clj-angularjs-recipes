@@ -18,4 +18,4 @@
 
 (defn get-weather
 	[]
-  ((http/get weatherAPI) :body))
+  ((http/get weatherAPI {:as :json}) :body))
